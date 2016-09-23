@@ -2,7 +2,21 @@
 Project for adding support for aspect oriented programming and interceptors for EPiServer. 
 Starting with logging interceptor. 
 
+Problem: I have 50 repository classes I want detailed logs from like input/output parameters + execution times. 
 Now you can easily add detailed logging on any class in your solution with just a few lines of configuration.
+Example logs you will get per class you turn it on for:
+
+2016-09-23 14:51:43,658 [110] INFO LoggingInterceptor: Requesting method GetAllNews
+2016-09-23 14:51:43,923 [110] INFO LoggingInterceptor: GetAllNews executed in: 250 ms
+2016-09-23 14:51:43,936 [110] INFO LoggingInterceptor: Responding method GetAllNews has return value [
+  {
+    "Id": "1"
+  },
+  {
+    "Id": "1"
+  }
+]
+
 
 How to use:
 1. Install nuget package for the interceptor to use e.g. Mogul.Interceptor.Logging
