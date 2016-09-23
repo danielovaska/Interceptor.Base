@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Daniel Ovaska</authors>
+    <owners>Mogul</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Enables EPiServer projects to easily use interceptors. Requires EPiServer 9.0 or above.</description>
+    <releaseNotes>First version</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>EPiServer9 Interceptor AOP</tags>
+    <dependencies>
+      <dependency id="EPiServer.Framework" version="[9.0.0,10.0.0)" />
+    </dependencies>
+  </metadata>
+</package>
