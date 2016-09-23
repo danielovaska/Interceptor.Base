@@ -23,8 +23,9 @@ private static void ConfigureContainer(ConfigurationExpression container)
 container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor());
 
 -----------------------------------------------------------------------------------
+The interceptors logs on INFO level with log4net default. This means that you won't see messages unless you turn on INFO level logging. 
 To turn on the logging you can either turn on INFO lvl for log4net on the entire site. Probably a bad idea. 
-Or you can turn it on for the interceptors
+Or you can turn it on for the interceptors in EpiserverLog.config like:
 
  <appender name="debugFileLogAppender" type="log4net.Appender.RollingFileAppender" >
         <!-- Consider moving the log files to a location outside the web application -->
@@ -44,5 +45,6 @@ Or you can turn it on for the interceptors
     <appender-ref ref="debugFileLogAppender" />
   </logger>
 
+Remember to turn off logging when you are not using it anymore...
 Keep your solution clean from cross cutting concerns like logging. Use interceptors :)
 More interceptors incoming...
