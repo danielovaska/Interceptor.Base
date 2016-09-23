@@ -15,12 +15,8 @@ using Mogul.Interceptor.Logging;
 <!--
 private static void ConfigureContainer(ConfigurationExpression container)
 {
-//   container.Scan(x =>
-//   {
-//       x.TheCallingAssembly();
-//       x.WithDefaultConventions();
-//   });
-container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor());
+   container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor()); //Add logging to all methods on the INewsRepository interface...
+ }
  -->
 -----------------------------------------------------------------------------------
 The interceptors logs on INFO level with log4net default. This means that you won't see messages unless you turn on INFO level logging. 
