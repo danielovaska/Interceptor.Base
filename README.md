@@ -23,6 +23,26 @@ private static void ConfigureContainer(ConfigurationExpression container)
 container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor());
 
 -----------------------------------------------------------------------------------
+To turn on the logging you can either turn on INFO lvl for log4net on the entire site. Probably a bad idea. 
+Or you can turn it on for the interceptors
+
+ <appender name="debugFileLogAppender" type="log4net.Appender.RollingFileAppender" >
+        <!-- Consider moving the log files to a location outside the web application -->
+        <file value="App_Data\Debug.log" />
+        <encoding value="utf-8" />
+        <staticLogFileName value="true"/>
+        <datePattern value=".yyyyMMdd.'log'" />
+        <rollingStyle value="Date" />
+        <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+        <appendToFile value="true" />
+        <layout type="log4net.Layout.PatternLayout">
+            <conversionPattern value="%date [%thread] %level %logger: %message%n" />
+        </layout>
+    </appender>
+  <logger name="Mogul.Interceptor" additivity="true">
+    <level value="All" />
+    <appender-ref ref="debugFileLogAppender" />
+  </logger>
 
 Keep your solution clean from cross cutting concerns like logging. Use interceptors :)
 More interceptors incoming...
