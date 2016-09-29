@@ -18,11 +18,7 @@ namespace Mogul.Interceptor.Base.Infrastructure.IoC
         public static void RegisterInterceptor<TDependency>(this ConfigurationExpression container, IInterceptor interceptorToAdd)
             where TDependency : class
         {
-            if (interceptorToAdd == null)
-                throw new NullReferenceException("interceptor");
-            var proxyGenerator = new ProxyGenerator();
-            container.For<TDependency>().DecorateAllWith(
-                instance => proxyGenerator.CreateInterfaceProxyWithTarget(instance, interceptorToAdd));
+            RegisterInterceptors<TDependency>(container, new[] {interceptorToAdd});
         }
 
         public static void RegisterInterceptors<TDependency>(this ConfigurationExpression container, IInterceptor[] interceptorsToAdd)
@@ -31,8 +27,19 @@ namespace Mogul.Interceptor.Base.Infrastructure.IoC
             if (interceptorsToAdd == null)
                 throw new NullReferenceException("interceptor");
             var proxyGenerator = new ProxyGenerator();
-            container.For<TDependency>().DecorateAllWith(instance =>
-                proxyGenerator.CreateInterfaceProxyWithTarget(instance, interceptorsToAdd));
+            if (typeof (TDependency).IsInterface)
+            {
+                container.For<TDependency>().DecorateAllWith(instance =>
+                    proxyGenerator.CreateInterfaceProxyWithTarget(instance, interceptorsToAdd));
+            }
+            else
+            {
+                if (typeof (TDependency).IsAbstract)
+                {
+                    throw new ArgumentException("Can't add interceptor to abstract/static classes.");
+                }
+                container.For<TDependency>().Use(i => proxyGenerator.CreateClassProxy<TDependency>(interceptorsToAdd));
+            }
         }
     }
 }

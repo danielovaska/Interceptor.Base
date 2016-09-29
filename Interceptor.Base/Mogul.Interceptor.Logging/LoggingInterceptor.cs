@@ -80,15 +80,24 @@ namespace Mogul.Interceptor.Logging
     }
     public class LoggingInterceptorSettings
     {
+        /// <summary>
+        /// Default is true
+        /// </summary>
         public bool LogExecutionTime { get; set; }
+        /// <summary>
+        /// Default is false
+        /// </summary>
         public bool LogInputParameters { get; set; }
+        /// <summary>
+        /// Default is false
+        /// </summary>
         public bool LogOutputParameters { get; set; }
 
         public LoggingInterceptorSettings()
         {
             LogExecutionTime = true;
-            LogInputParameters = true;
-            LogOutputParameters = true;
+            LogInputParameters = false;
+            LogOutputParameters = false;
         }
     }
 }
