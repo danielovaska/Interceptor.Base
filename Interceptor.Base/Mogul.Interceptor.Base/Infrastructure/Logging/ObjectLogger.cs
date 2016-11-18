@@ -31,11 +31,9 @@ namespace Mogul.Interceptor.Base.Infrastructure.Logging
             var jsonResolver = new IgnorableSerializerContractResolver();
             // ignore single datatype
             jsonResolver.Ignore(typeof(IContent));
-            jsonResolver.Ignore(typeof(ContentRoute));
             jsonResolver.Ignore(typeof(PageData));
             jsonResolver.Ignore(typeof(System.IO.Stream));
             jsonResolver.Ignore(typeof(HttpContextBase));
-            jsonResolver.Ignore(typeof(PageRouteHelper));
             
             _settings = new ObjectLoggerSettings
             {

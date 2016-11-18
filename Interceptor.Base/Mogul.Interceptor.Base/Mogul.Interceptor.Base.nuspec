@@ -7,12 +7,12 @@
     <authors>Daniel Ovaska</authors>
     <owners>Mogul</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Enables EPiServer projects to easily use interceptors. Requires EPiServer 9.0 or above.</description>
+    <description>Enables EPiServer projects to easily use interceptors. Requires EPiServer 10.0 or above.</description>
     <releaseNotes>First version</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>EPiServer9 Interceptor AOP</tags>
     <dependencies>
-      <dependency id="EPiServer.Framework" version="[9.0.0,10.0.0)" />
+      <dependency id="EPiServer.Framework" version="[10.0.0,11.0.0)" />
     </dependencies>
     <projectUrl>https://github.com/danielovaska/Interceptor.Base</projectUrl>
   </metadata>
