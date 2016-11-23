@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mogul.Interceptor.Base", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mogul.Interceptor.Logging", "Mogul.Interceptor.Logging\Mogul.Interceptor.Logging.csproj", "{D3D3556F-C595-4311-9386-25C7DEEF3A8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mogul.Interceptor.Cache", "Mogul.Interceptor.Cache\Mogul.Interceptor.Cache.csproj", "{23D53073-1383-468F-9224-5F944FC963E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D3D3556F-C595-4311-9386-25C7DEEF3A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3D3556F-C595-4311-9386-25C7DEEF3A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3D3556F-C595-4311-9386-25C7DEEF3A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23D53073-1383-468F-9224-5F944FC963E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D53073-1383-468F-9224-5F944FC963E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D53073-1383-468F-9224-5F944FC963E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D53073-1383-468F-9224-5F944FC963E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

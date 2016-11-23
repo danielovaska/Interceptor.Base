@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
@@ -10,7 +10,7 @@
     <description>Enables EPiServer projects to easily use logging interceptors. You can easily log output/input parameters and execution time on anything that you have an interface on. Requires EPiServer 10.0 or above and the Mogul.Interceptor.Base package.</description>
     <releaseNotes>First version</releaseNotes>
     <copyright>Copyright 2016</copyright>
-    <tags>EPiServer9 Interceptor AOP</tags>
+    <tags>EPiServer10 Interceptor AOP</tags>
     <dependencies>
       <dependency id="EPiServer.Framework" version="[10.0.0,11.0.0)" />
       <dependency id="Mogul.Interceptor.Base" version="[10.0.0,10.0.1)" />
