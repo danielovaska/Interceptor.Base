@@ -7,7 +7,7 @@ Project for adding support for aspect oriented programming and interceptors for 
 Problem: I have 50 repository classes I want detailed logs from like input/output parameters + execution times. 
 Now you can easily add detailed logging on any class in your solution with just a few lines of configuration.
 Example logs you will get per class you turn it on for:
-
+```
 2016-09-23 14:51:43,658 [110] INFO LoggingInterceptor: Requesting method GetAllNews  
 2016-09-23 14:51:43,923 [110] INFO LoggingInterceptor: GetAllNews executed in: 250 ms  
 2016-09-23 14:51:43,936 [110] INFO LoggingInterceptor: Responding method GetAllNews has return value [  
@@ -18,17 +18,17 @@ Example logs you will get per class you turn it on for:
     "Id": "1"  
   }  
 ]  
-
+```
 
 ###How to use Logging Interceptor:
 1. Install nuget package for the interceptor to use e.g. Mogul.Interceptor.Logging
 2. Add the interceptor to the interfaces you want to log by using structuremap initialization.
 In alloy template project you can use the new extension RegisterInterceptor. Lets try it out on my NewsRepository class:
-
+``` 
 using Mogul.Interceptor.Base.Infrastructure.IoC;  
 using Mogul.Interceptor.Logging;  
-...  
-``` 
+...
+
 private static void ConfigureContainer(ConfigurationExpression container)  
 {  
    container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor()); //Add logging to all methods on the INewsRepository interface...
@@ -64,7 +64,7 @@ Keep your solution clean from cross cutting concerns like logging. Use intercept
 
 ##Cache Interceptor
 
-1. **Register the cache interceptor and hook in on to an interface in ioc**  
+* **Register the cache interceptor and hook in on to an interface in ioc**  
 container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor());  
 or chain them  
 ```
@@ -73,7 +73,7 @@ container.RegisterInterceptors<INewsRepository>(new IInterceptor[]{
                 new CacheInterceptor()
             });
 ```
-2. **Mark what methods on the interface you want to cache with the new cache attribute**
+* **Mark what methods on the interface you want to cache with the new cache attribute**
 ```
 public interface INewsRepository
 {
@@ -84,12 +84,12 @@ public interface INewsRepository
 This will automatically construct a unique key based on method name and request parameters. 
 It will cache it for 10s and it uses an area in cache called news. This is basically a master key that allows you to clear parts of the cache easily.
 
-3. **To empty cache for a section in the cache user the cache service class**
+* **To empty cache for a section in the cache user the cache service class**
 ```
 var cacheService = new CacheService();
 cacheService.EmptyCacheBucket("News");
 ```
-4. For advanced scenarios you can implement interfaces for both request and reponse from the methods. 
+* **For advanced scenarios you can implement interfaces for both request and reponse from the methods.**  
 This will allow you to control the caching in detail like whether to ignore cache for a request (good for authenticated users...) or use a specific cache key. 
 
 **The request interface is used like:**
