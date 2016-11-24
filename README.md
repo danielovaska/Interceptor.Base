@@ -18,7 +18,7 @@ Example logs you will get per class you turn it on for:
 ]
 
 
-How to use:
+How to use Logging Interceptor:
 1. Install nuget package for the interceptor to use e.g. Mogul.Interceptor.Logging
 2. Add the interceptor to the interfaces you want to log by using structuremap initialization.
 In alloy template project you can use the new extension RegisterInterceptor. Lets try it out on my NewsRepository class:
@@ -57,4 +57,48 @@ Or you can turn it on for the interceptors in EpiserverLog.config like:
  -->
 Remember to turn off logging when you are not using it anymore...
 Keep your solution clean from cross cutting concerns like logging. Use interceptors :)
-More interceptors incoming...
+
+
+How to use Cache Interceptor:
+1. Register it in ioc
+container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor());
+or chain them
+container.RegisterInterceptors<INewsRepository>(new IInterceptor[]{
+                new LoggingInterceptor(),
+                new CacheInterceptor()
+            });
+2. Mark what methods you want to cache with the attribute like
+public interface INewsRepository
+{
+    [Cache(10,"News")]
+    NewsResponse GetNews(GetItemsRequest request);
+}
+This will automatically construct a unique key based on method name and request parameters. 
+It will cache it for 10s and it uses an area in cache called news. This is basically a master key that allows you to clear parts of the cache easily.
+
+3. To empty cache for the "News" use
+var cacheService = new CacheService();
+cacheService.EmptyCacheBucket("News");
+
+4. For advanced scenarios you can implement interfaces for both request and reponse from the methods. 
+This will allow you to control the caching in detail like whether to ignore cache for a request (good for authenticated users...) or use a specific cache key. 
+The request interface is used like:
+
+public class GetItemsRequest : ICachedRequest
+{
+    public string CacheKey { get; set; } //Custom cache key that is not auto-generated
+    public TimeSpan? CacheDuration { get; set; } //Custom cache duration
+    public bool GetFromCache { get; set; } //Use result in cache if it exists?
+    public bool StoreInCache { get; set; } //Store result in cache?
+    public IEnumerable<string> CacheBuckets { get; set; } //Master keys for caching. Usually the root entity like "Users", "News" or similar. 
+	//Useful when emptying cache
+	//...your custom parameters for the request go here. Filters, ids etc...
+}
+
+The response interface is used like:
+public class NewsResponse : ICachedResponse
+{
+    public IEnumerable<NewsItem> Items { get; set; } //Custom values you want to return
+    public bool GotItemFromCache { get; set; } //Did I get this from cache? Useful when debugging.
+}
+
