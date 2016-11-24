@@ -10,7 +10,7 @@
     <description>Enables EPiServer projects to easily use caching interceptors. Requires Episerver 10.0 or above.</description>
     <releaseNotes>First version</releaseNotes>
     <copyright>Copyright 2015</copyright>
-    <tags>EPiServer10 Interceptor AOP</tags>
+    <tags>EPiServer10 Interceptor AOP Cache</tags>
     <dependencies>
       <dependency id="EPiServer.Framework" version="[10.0.0,11.0.0)" />
       <dependency id="Mogul.Interceptor.Base" version="[10.0.0,10.0.1)" />
