@@ -67,17 +67,21 @@ Keep your solution clean from cross cutting concerns like logging. Use intercept
 Adding caching directly in your services can get pretty messy and difficult to read.   
 Why not have it in a separate layer and let your class focus on what it should be doing (SRP).   
 Decorator pattern works great for this but quickly gets boring and repetitive.     
-Try out an interceptor for cache instead that is both DRY and SOLID.   
+Try out an interceptor for cache instead that is both DRY and SOLID. Zero code changes in your implementation classes!   
 
 
-* **Register the cache interceptor and hook in on to an interface in ioc**  
-container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor());  
-or chain them  
+* **Add cache interceptor to an interface when configuring your IoC container ** 
+```
+container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor()); 
+//Great! Now the NewsRepository also have caching!
+```
+or chain them if you want more than one interceptor...
 ```
 container.RegisterInterceptors<INewsRepository>(new IInterceptor[]{
                 new LoggingInterceptor(),
                 new CacheInterceptor()
             });
+//Great! Now the NewsRepository have both caching and logging!
 ```
 * **Mark what methods on the interface you want to cache with the new cache attribute**
 ```
