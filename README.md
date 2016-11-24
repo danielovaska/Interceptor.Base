@@ -64,6 +64,12 @@ Keep your solution clean from cross cutting concerns like logging. Use intercept
 
 ##Cache Interceptor
 
+Adding caching directly in your services can get pretty messy and difficult to read.   
+Why not have it in a separate layer and let your class focus on what it should be doing (SRP).   
+Decorator pattern works great for this but quickly gets boring and repetitive.     
+Try out an interceptor for cache instead that is both DRY and SOLID.   
+
+
 * **Register the cache interceptor and hook in on to an interface in ioc**  
 container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor());  
 or chain them  
