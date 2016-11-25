@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mogul.Interceptor.Logging",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mogul.Interceptor.Cache", "Mogul.Interceptor.Cache\Mogul.Interceptor.Cache.csproj", "{23D53073-1383-468F-9224-5F944FC963E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mogul.Glimpse.Episerver", "Mogul.Glimpse.Episerver\Mogul.Glimpse.Episerver.csproj", "{85E779BF-08E6-429C-855B-A3A74BD43D44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{23D53073-1383-468F-9224-5F944FC963E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23D53073-1383-468F-9224-5F944FC963E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23D53073-1383-468F-9224-5F944FC963E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85E779BF-08E6-429C-855B-A3A74BD43D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85E779BF-08E6-429C-855B-A3A74BD43D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85E779BF-08E6-429C-855B-A3A74BD43D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85E779BF-08E6-429C-855B-A3A74BD43D44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd">
+    <tabs xdt:Transform="InsertIfMissing">
+      <ignoredTypes>
+        <add type="Glimpse.AspNet.Tab.Routes, Glimpse.AspNet" />
+        <add type="Glimpse.AspNet.Tab.Cache, Glimpse.AspNet" />
+        <add type="Glimpse.Mvc.Tab.ModelBinding, Glimpse.Mvc5" />
+        <add type="Glimpse.Mvc.Tab.Metadata, Glimpse.Mvc5" />
+      </ignoredTypes>
+    </tabs>
+    <inspectors xdt:Transform="InsertIfMissing">
+      <ignoredTypes>
+        <add type="Glimpse.AspNet.Inspector.RoutesInspector, Glimpse.AspNet" />
+        <add type="Glimpse.Mvc.Inspector.ModelBinderInspector, Glimpse.Mvc5" />
+      </ignoredTypes>
+    </inspectors>
+  </glimpse>
+</configuration>
