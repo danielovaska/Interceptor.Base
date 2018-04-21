@@ -2,6 +2,6 @@ namespace Mogul.Interceptor.Cache
 {
     public interface ICachedResponse
     {
-        bool GotItemFromCache { get; set; }
+        bool GotItemFromCache { get; set; } 
     }
 }

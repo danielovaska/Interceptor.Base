@@ -11,7 +11,7 @@ namespace Mogul.Interceptor.Logging
     /// Useful interceptor for logging all values to and from a method.
     /// Especiallly useful for calls to external data sources to locate errors with integrations...
     /// </summary>
-    public class LoggingInterceptor : IInterceptor
+    public class LoggingInterceptor : IInterceptor 
     {
         private readonly ILogger _log;
         private readonly IObjectLogger _objectLogger;

@@ -3,12 +3,12 @@ using Castle.DynamicProxy;
 
 namespace Mogul.Interceptor.Base
 {
-    public static class InterceptorUtil
+    public static class InterceptorUtil  
     {
-        public static T GetMethodAttribute<T>(IInvocation invocation) where T : class
+        public static T GetMethodAttribute<T>(IInvocation invocation) where T : class     
         {
-            T authorizationAttribute = null;
-            if (invocation.Method.IsDefined(typeof(T), false))
+            T authorizationAttribute = null; 
+            if (invocation.Method.IsDefined(typeof(T), false))   
             {
                 var attributes = System.Attribute.GetCustomAttributes(invocation.Method);
 

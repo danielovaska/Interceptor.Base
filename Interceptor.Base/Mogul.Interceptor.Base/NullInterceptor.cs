@@ -7,7 +7,7 @@ namespace Mogul.Interceptor.Base
     /// </summary>
     public class NullInterceptor : IInterceptor
     {
-        public void Intercept(IInvocation invocation)
+        public void Intercept(IInvocation invocation) 
         {
             invocation.Proceed();
         }

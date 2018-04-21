@@ -5,15 +5,15 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>Daniel Ovaska</authors>
-    <owners>Mogul</owners>
+    <owners>Binary True AB</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Enables EPiServer projects to easily use logging interceptors. You can easily log output/input parameters and execution time on anything that you have an interface on. Requires EPiServer 10.0 or above and the Mogul.Interceptor.Base package.</description>
+    <description>Enables EPiServer projects to easily use logging interceptors. You can easily log output/input parameters and execution time on anything that you have an interface on. Requires EPiServer 11.0 or above and the Mogul.Interceptor.Base package.</description>
     <releaseNotes>First version</releaseNotes>
-    <copyright>Copyright 2016</copyright>
-    <tags>EPiServer10 Interceptor AOP logging</tags>
+    <copyright>Copyright 2018</copyright>
+    <tags>EPiServer11 Interceptor AOP logging</tags>
     <dependencies>
-      <dependency id="EPiServer.Framework" version="[10.0.0,11.0.0)" />
-      <dependency id="Mogul.Interceptor.Base" version="[10.0.0,10.0.1)" />
+      <dependency id="EPiServer.Framework" version="[11.0.0,12.0.0)" />
+      <dependency id="Mogul.Interceptor.Base" version="[11.0.0,11.1.0)" />
     </dependencies>
     <projectUrl>https://github.com/danielovaska/Interceptor.Base</projectUrl>
   </metadata>

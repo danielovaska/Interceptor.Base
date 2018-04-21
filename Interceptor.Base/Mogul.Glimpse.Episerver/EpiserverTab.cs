@@ -15,7 +15,8 @@ namespace Mogul.Glimpse.Episerver
     {
         public override object GetData(ITabContext context)
         {
-            var result = new List<object>();
+              
+            var result = new List<object>(); 
             var routeHelper = ServiceLocator.Current.GetInstance<IPageRouteHelper>();
             var currentPage = routeHelper.Page;
             if (currentPage != null)
