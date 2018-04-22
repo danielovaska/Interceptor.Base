@@ -26,13 +26,26 @@ Example logs you will get per class you turn it on for:
 In alloy template project you can use the new extension RegisterInterceptor. Lets try it out on my NewsRepository class:
 ``` 
 using Mogul.Interceptor.Base.Infrastructure.IoC;  
-using Mogul.Interceptor.Logging;  
+using Mogul.Interceptor.Logging; 
+üsing Mogul.Interceptor.Cache;
 ...
+[InitializableModule]
+    public class DependencyResolverInitialization : IConfigurableModule
+    {
+        public void ConfigureContainer(ServiceConfigurationContext context)
+        {
+            //Implementations for custom interfaces can be registered here.
 
-private static void ConfigureContainer(ConfigurationExpression container)  
-{  
-   container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor()); //Add logging to all methods on the INewsRepository interface...
-}  
+            context.ConfigurationComplete += (o, e) =>
+            {
+                //Register custom implementations that should be used in favour of the default implementations
+                context.Services
+                .AddTransient<IContentRenderer, ErrorHandlingContentRenderer>()
+                .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>()
+                .AddTransient<INewsRepository, NewsRepository>()
+                .AddInterceptors<INewsRepository>(new[] {typeof(LoggingInterceptor)});
+            };
+        }
 ``` 
 
 -----------------------------------------------------------------------------------  
@@ -77,10 +90,16 @@ container.RegisterInterceptor<INewsRepository>(new LoggingInterceptor());
 ```
 or chain them if you want more than one interceptor...
 ```
-container.RegisterInterceptors<INewsRepository>(new IInterceptor[]{
-                new LoggingInterceptor(),
-                new CacheInterceptor()
-            });
+context.ConfigurationComplete += (o, e) =>
+            {
+                //Register custom implementations that should be used in favour of the default implementations
+                context.Services
+                .AddTransient<IContentRenderer, ErrorHandlingContentRenderer>()
+                .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>()
+                .AddTransient<INewsRepository, NewsRepository>()
+                .AddInterceptors<INewsRepository>(new[] {typeof(LoggingInterceptor)});
+            };
+
 //Great! Now the NewsRepository have both caching and logging!
 ```
 * **Mark what methods on the interface you want to cache with the new cache attribute**
